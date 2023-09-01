@@ -33,6 +33,22 @@ variable "db_subnet" {
   default = ["10.0.224.0/19", "10.0.192.0/19"]
 }
 
+variable "client_id" {
+  type = string
+}
+
+variable "client_secret" {
+  type = string
+}
+
+variable "subscription_id" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
+}
+
 # variable "" {
 #   type = string
 #   default = ""
