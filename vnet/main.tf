@@ -15,7 +15,7 @@ resource "azurerm_subnet" "public" {
   name                 = "${var.name}-${var.env}-public-${count.index}"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = element(var.public_subnet [count.index])
+  address_prefixes     = var.public_subnet [count.index]
 }
 
 # resource "azurerm_subnet" "app" {
