@@ -10,28 +10,46 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_subnet" "public" {
-  count = 2
-  name                 = "${var.name}-${var.env}-public-${count.index}"
+resource "azurerm_subnet" "pub1" {
+  name                 = "${var.name}-${var.env}-public-1"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = var.public_subnet
+  address_prefixes     = var.public1
 }
 
-resource "azurerm_subnet" "app" {
-  count = 2
-  name                 = "${var.name}-${var.env}-app-${count.index}"
+resource "azurerm_subnet" "pub2" {
+  name                 = "${var.name}-${var.env}-public-2}"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = var.app_subnet
+  address_prefixes     = var.public2
 }
 
-resource "azurerm_subnet" "db" {
-  count = 2
-  name                 = "${var.name}-${var.env}-db-${count.index}"
+resource "azurerm_subnet" "app1" {
+  name                 = "${var.name}-${var.env}-app-1"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = var.db_subnet
+  address_prefixes     = var.app1
 }
 
+resource "azurerm_subnet" "app2" {
+  name                 = "${var.name}-${var.env}-app-2"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = var.app2
+}
 
+resource "azurerm_subnet" "db1" {
+  count = 2
+  name                 = "${var.name}-${var.env}-db-1"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = var.db1
+}
+
+resource "azurerm_subnet" "db2" {
+  count = 2
+  name                 = "${var.name}-${var.env}-db-2"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = var.db2
+}
